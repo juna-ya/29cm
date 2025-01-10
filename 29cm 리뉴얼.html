@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29cm 리뉴얼</title>
+    <link rel="stylesheet" href="css/29cm리뉴얼.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector(".header"); // 헤더 선택
+            const scrollBar = window.scrollY;
+            if (scrollBar > 0) {
+                header.classList.add('fixed'); // 스크롤 시 클래스 추가
+            } else {
+                header.classList.remove('fixed'); // 상단으로 돌아오면 클래스 제거
+            }
+        });
+
+        $(document).ready(function () {
+            const $sliderInner = $(".slider_inner");
+            const $items = $(".slider_inner .item");
+            const itemCount = $items.length;
+
+            // 복제된 슬라이드 추가
+            $items.each(function () {
+                $(this).clone().appendTo($sliderInner);
+            });
+
+            // 슬라이드가 끝날 때 처음 이미지로 이동하도록 설정
+            $sliderInner.on("animationiteration", function () {
+                $sliderInner.css("animation", "none");
+                $sliderInner.css("transform", "translateX(0)");
+                setTimeout(function () {
+                    $sliderInner.css("animation", "slide 30s linear infinite");
+                }, 50);
+            });
+
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,             // 화면에 보이는 슬라이드 개수
+                spaceBetween: 20,             // 슬라이드 간격 (px)
+                centeredSlides: true,         // 중앙에 슬라이드를 배치
+                loop: true,                   // 무한 반복
+                autoplay: {                   // 자동 슬라이드 설정
+                    delay: 3000,              // 3초마다 슬라이드
+                    disableOnInteraction: false, // 사용자 조작 후에도 자동 슬라이드 유지
+                },
+                navigation: {                 // 화살표 버튼 설정
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'progressbar', // 프로그레스 바 형태의 페이지네이션
+                },
+            });
+            const section = document.querySelector('.dp-section.main-best-seller'); // 해당 섹션 선택
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 요소가 화면에 들어오면 .visible 클래스를 추가하여 애니메이션 실행
+                    entry.target.classList.add('visible');
+                } else {
+                    // 화면에서 나가면 .visible 클래스를 제거하여 애니메이션 초기화
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 }); // 요소가 50% 보일 때 애니메이션 시작
+
+        // 해당 섹션에 관찰기 적용
+        observer.observe(section);
+    });
+    </script>
+
+</head>
+    
+
+<body>
+    <header class="header">
+        <h1 class="logo">
+            <a href="#">
+                <img src="img/29_logo.png" alt="">
+            </a>
+        </h1>
+        <div class="main_menu">
+            <ul>
+                <li><a href="#">WOMAN</a></li>
+                <li><a href="#">MEN</a></li>
+                <li><a href="#">LIFE</a></li>
+                <li><a href="#">BEAUTY</a></li>
+                <li><a href="#">KIDS</a></li>
+                <li><a href="#">CULTURE</a></li>
+            </ul>
+
+            <div class="main_Event">
+                <a href="#">Event</a>
+            </div>
+            <div class="mian_Lookbook">
+                <a href="#">Lookbook</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide"><img src="img/29cm_메인비주얼_7.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/29cm_메인비주얼_5.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/29cm_메인비주얼_2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/29cm_메인비주얼_6.jpg" alt=""></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination-number"></div>
+    <!-- 프로그레스 바 페이지네이션 -->
+    <div class="swiper-pagination-bar"></div>
+    </div>
+
+
+    <section class="dp-section main-best-seller" id="mainSectionNewArrivals" style>
+        <h2 class="dp-title eng">
+            <span>WEEKLY BEST</span>
+        </h2>
+
+        <div class="main_section module01">
+            <a href="#" class="conBox setClickLog">
+                <img src="img/OTWO FURNITURE.png" alt="OTWO FURNITURE">
+                <div class="text">
+                    <h1>OTWO FURNITURE</h1>
+                    <p>새로운 시작, 그 가까운 곳에 함께</p>
+                </div>
+            </a>
+            <div class="ltem_prod_wrapper">
+                <a href="#" class="item_prod">
+
+                    <div class="prod_img">
+                        <div class="before">
+                            <img src="img/데일리 니트가디건.jpg" alt="데일리 니트가디건">
+                        </div> <!-- img before -->
+                        <div class="after">
+                            <img src="img/데일리 니트가디건_h.jpg" alt="">
+                        </div> <!-- img after -->
+
+                    </div> <!-- pord-img -->
+                    <div class="prod_con">
+                        <div class="prod_title">[SET]데일리 니트 가디건_14Color</div>
+                        <div class="prod_price_con">
+                            <div class="prod_price">66,310</div>
+                        </div> <!-- prod_price_con -->
+                    </div> <!-- prod_con -->
+                </a>
+                <a href="https://product.29cm.co.kr/catalog/2270167?keyword=Jacquard+hoodie+cardigan_2colors&sort=RECOMMEND&sortOrder=DESC&defaultSort=RECOMMEND"
+                    class="item_prod">
+                    <div class="prod_img">
+                        <div class="before">
+                            <img src="img/Jacquard hoodie cardigan_2colors.jpg" alt="후드 가디건">
+                        </div> <!-- before -->
+                        <div class="after">
+                            <img src="img/Jacquard hoodie cardigan_2colors 2.jpg" alt="">
+
+                        </div> <!-- after -->
+                    </div> <!-- prod_img -->
+                    <div class="prod_con">
+                        <div class="prod_title">[9차 리오더] Jacquard hoodie cardigan_2colors</div>
+                        <div class="prod_price_con">
+                            <div class="prod_price">103,500</div>
+                        </div> <!-- prod_price_con -->
+                    </div> <!-- prod_con -->
+                </a>
+            </div> <!-- ltem_prod_wrapper -->
+        </div> <!-- main_section module -->
+    </section>
+
+
+    <section class="section-02">
+        <div class="main_img">
+            <img src="img/틸아이다이.jpg" alt="">
+        </div> <!-- .main img end -->
+
+        <div class="item-box">
+            <div class="inner_box">
+                <img src="img/아바몰리.jpg" alt="아바몰리 메인" />
+                <div class="text">
+                    <h3>조화로운 겨울의 아름다움</h3>
+                    <p>아바몰리의 겨울 컬렉션 오픈 소식. 여유로운 아름다움과 자연스러움의 미학을
+                        담아 냈어요.</p>
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/아바몰리 2.jpg" />
+                        </div> <!-- .img_box end -->
+                        <div class="text01">
+                            <h5>아바몰리</h5>
+                            <h6>WOOL SHEARING MUSTANG CT (IVORY)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>106</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+
+                    </div> <!-- .item_list end  -->
+
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/아바몰리 2.jpg" />
+                        </div> <!-- .img_box end -->
+                        <div class="text01">
+                            <h5>아바몰리</h5>
+                            <h6>CASHMERE BLENDED 4BUTTON SINGLE CT (BEIGE)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>100</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+                    </div> <!-- .item_list end  -->
+
+
+
+                </div> <!-- .text end -->
+            </div> <!-- inner? -->
+            <div class="inner_box">
+                <img src="img/굿니스.jpg" alt="굿니스 메인" />
+                <div class="text">
+                    <h3>빈티지와 영화의 만남</h3>
+                    <p>클래식 영화에서 얻은 영감으로 과거와 현대를 잇는 굿니스와 함께 일상에
+                        특별함을 더해요.</p>
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/굿니스 1.jpg" />
+                        </div> <!-- .img_box end -->
+                        <div class="text02">
+                            <h5>아바몰리</h5>
+                            <h6>WOOL SHEARING MUSTANG CT (IVORY)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>106</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+
+                    </div> <!-- .item_list end  -->
+
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/굿니스2.jpg" />
+                        </div> <!-- .img_box end -->
+                        <div class="text02">
+                            <h5>아바몰리</h5>
+                            <h6>CASHMERE BLENDED 4BUTTON SINGLE CT (BEIGE)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>100</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+                    </div> <!-- .item_list end  -->
+
+                </div> <!-- .text end -->
+            </div> <!-- inner box end -->
+
+        </div> <!-- .item-box end -->
+    </section> <!-- .section-02 end -->
+
+
+
+    <section class="section-02-1">
+        <div class="main_img">
+            <img src="img/겨울아우터키워드.jpg" alt="">
+        </div> <!-- .main img end -->
+
+        <div class="item-box">
+            <div class="inner_box">
+                <img src="img/더 그란.jpg" alt="더 그란 메인" />
+                <div class="text">
+                    <h3>보송한 하루 되세요!</h3>
+                    <p>일상 속 사물을 바라보며 느낀 다양한 감정과 시각을 담은 하우스 컬렉션을 소개해요.</p>
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/더 그란1.jpg" alt="" />
+                        </div> <!-- .img_box end -->
+                        <div class="text01">
+                            <h5>더 그란</h5>
+                            <h6>WOOL SHEARING MUSTANG CT (IVORY)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>106</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+
+                    </div> <!-- .item_list end  -->
+
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/더 그란2.jpg" alt="" />
+                        </div> <!-- .img_box end -->
+                        <div class="text01">
+                            <h5>더 그란</h5>
+                            <h6>CASHMERE BLENDED 4BUTTON SINGLE CT (BEIGE)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>100</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+                    </div> <!-- .item_list end  -->
+
+
+
+                </div> <!-- .text end -->
+            </div> <!-- inner? -->
+            <div class="inner_box">
+                <img src="img/쓰임.jpg" alt="쓰임 메인" />
+                <div class="text">
+                    <h3>기본에 충실한 이유</h3>
+                    <p>클래식 영화에서 얻은 영감으로 과거와 현대를 잇는 굿니스와 함께 일상에
+                        특별함을 더해요.</p>
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/쓰임 1.jpg" />
+                        </div> <!-- .img_box end -->
+                        <div class="text02">
+                            <h5>쓰임</h5>
+                            <h6>WOOL SHEARING MUSTANG CT (IVORY)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>106</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+
+                    </div> <!-- .item_list end  -->
+
+                    <div class="item_list">
+                        <div class="img_box">
+                            <img src="img/쓰임 2.jpg" />
+                        </div> <!-- .img_box end -->
+                        <div class="text02">
+                            <h5>쓰임</h5>
+                            <h6>CASHMERE BLENDED 4BUTTON SINGLE CT (BEIGE)</h6>
+                            <div>
+                                <span>20%</span>
+                                <strong>270,000</strong>
+                            </div>
+                            <a href="#">
+                                <div class="button">
+                                    <img src="img/찜 아이콘.jpg" alt="찜">
+                                    <span>100</span>
+                                </div> <!-- button end -->
+                            </a>
+                        </div> <!-- text01 end -->
+                    </div> <!-- .item_list end  -->
+
+                </div> <!-- .text end -->
+            </div> <!-- inner box end -->
+
+        </div> <!-- .item-box end -->
+    </section> <!-- .section-02 end -->
+
+    <section class="section-03">
+        <div class="inner">
+            <video autoplay muted loop>
+                <source src="img/29cm 동영상.mp4" />
+            </video>
+            <div class="item_wrap">
+                <div class="item">
+                    <div class="text">
+                        <h4>쇼핑하기</h4>
+                    </div>
+                </div> <!-- item end -->
+
+                <div class="item">
+                    <div class="text">
+                        <h5>영상보기</h5>
+                        <img src="img/영상보기 아이콘.png" alt="" />
+                    </div>
+                </div> <!-- item end -->
+            </div>
+        </div>
+    </section>
+
+    <section class="section-04">
+        <div class="event_wrap">
+            <div class="item_event">
+                <img src="img/이벤트 1.jpg" alt="" />
+                <div class="text">
+                    <h2>GLOBAL BRAND</h2>
+                    <span>설레는 혜택으로 만나는 신상 해외 브랜드 런웨이 Ep.13</span>
+                </div> <!-- text -->
+            </div><!-- item_event -->
+            <div class="item_event">
+                <img src="img/이벤트 2.jpg" alt="" />
+                <div class="text">
+                    <h2>TEKLA</h2>
+                    <span>당신의 편안한 집을 위한 테클라</span>
+                </div> <!-- text -->
+            </div><!-- item_event -->
+
+        </div>
+    </section>
+
+    <section class="Lookbook">
+        <h2 class="title"><a href="#">HOW DO I LOOK</a></h2>
+        <p>이런 코디는 어때요?</p>
+        <div class="slider_inner">
+            <div class="item">
+                <img src="img/look_1.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_2.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_3.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_4.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_7.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_8.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_11.png" alt="">
+            </div>
+            <div class="item">
+                <img src="img/look_12.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="section-05">
+        <div class="section">
+            <h1>MAGZINE</h1>
+            <div class="item_wrap">
+                <div class="item">
+                    <img src="img/메거진 1.jpg" alt= />
+                    <div class="text">
+                        <h2>TRIMMING BIRD</h2>
+                        <p>지금 그 브랜드, <br/> 어떻게 또 얼마나 알고계세요?</p>
+
+                    </div><!-- .text end -->
+                </div><!-- .item end -->
+                <div class="item">
+                    <img src="img/메거진 2.jpg" alt= />
+                    <div class="text">
+                        <h2>HUNTER</h2>
+                        <p>브랜드와 쇼룸, 핫플레이스까지 <br />
+                            다양한 이야기를 전합니다.</p>
+
+                    </div><!-- .text end -->
+                </div><!-- .item end -->
+                <div class="item">
+                    <img src="img/메거진 4.jpg" alt= />
+                    <div class="text">
+                        <h2>AOUT</h2>
+                        <p>친구들은 물론, 어쩌면 당신도 잘 몰랐을 브랜드</p>
+
+                    </div><!-- .text end -->
+                </div><!-- .item end -->
+
+            </div><!-- .item_wrap end -->
+        </div><!-- .section end -->
+
+
+    </section>
+
+    <footer>
+        <div class="footer_head">
+            <ul class="header_left">
+                <li>
+                    <div class="logo">
+                        <a href="#">
+                            <img src="img/29_logo.png" />
+                        </a>
+                    </div> <!-- logo end -->
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+                <li>
+                    <a href="#">1:1문의</a>
+                </li>
+                <li>
+                    <a href="#">뉴스</a>
+                </li>
+                <li>
+                    <a href="#">회사소개</a>
+                </li>
+                <li>
+                    <a href="#">채용정보</a>
+                </li>
+            </ul> <!-- header_left-->
+
+            <ul class="header_right">
+
+                <li>
+                    <a href="#">이용약관</a>
+                </li>
+                <li>
+                    <a href="#">개인정보처리방침</a>
+                </li>
+                <li>
+                    <a href="#">안전거래센터</a>
+                </li>
+                <li>
+                    <a href="#">제휴/입점 상담안내</a>
+                </li>
+            </ul> <!-- header_right -->
+        </div> <!-- footer_head -->
+        <div class="footer_bottom">
+            <ul class="company_info">
+                <li>
+                    <span>대표 : 조민호,박준모 </span>
+                    <span>사업자등록번호:211-88-79575 </span>
+                    <span><a href="#">사업자정보확인</a></span>
+                </li>
+                <li>
+                    <span>사업장소재지 :서울특별시 성동구 아차산로 13길 11, 1층 (성수동2가, 무신사캠퍼스 엔1) </span>
+                </li>
+                <li>
+                    <span>통신판매업신고 :2022-서울성동-01952 </span>
+                    <span>개인정보 보호책임자 :정광은 </span>
+                </li>
+                <li>
+                    <span>고객센터:1644-0560 </span>
+                    <span>팩스:070-8622-7737 </span>
+                    <span>운영시간 : 평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 제외)</span>
+                </li>
+                <li>
+                    <span>일부 상품의 경우 29CM는 통신판매의 당사자가 아닌 통신판매중개자로서 상품, 상품정보, 거래에 대한 책임이 제한될 수 있으므로, 각 상품 페이지에서 구체적인
+                        내용을
+                        확인하시기 바랍니다.</span>
+                </li>
+            </ul> <!-- company_info end -->
+            <ul class="sns_box">
+                <li>
+                    <a href="#">
+                        <img src="img/인스타그램.png" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="img/페이스북.png" />
+                    </a>
+                </li>
+            </ul>
+        </div> <!--  -->
+    </footer> <!--  -->
+</body>
+</html>
