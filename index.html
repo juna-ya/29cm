@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +17,12 @@
 
     <script>
         window.addEventListener('scroll', () => {
-            const header = document.querySelector(".header"); // 헤더 선택
+            const header = document.querySelector(".header");
             const scrollBar = window.scrollY;
             if (scrollBar > 0) {
-                header.classList.add('fixed'); // 스크롤 시 클래스 추가
+                header.classList.add('fixed');
             } else {
-                header.classList.remove('fixed'); // 상단으로 돌아오면 클래스 제거
+                header.classList.remove('fixed');
             }
         });
 
@@ -30,12 +31,12 @@
             const $items = $(".slider_inner .item");
             const itemCount = $items.length;
 
-            // 복제된 슬라이드 추가
+
             $items.each(function () {
                 $(this).clone().appendTo($sliderInner);
             });
 
-            // 슬라이드가 끝날 때 처음 이미지로 이동하도록 설정
+
             $sliderInner.on("animationiteration", function () {
                 $sliderInner.css("animation", "none");
                 $sliderInner.css("transform", "translateX(0)");
@@ -45,47 +46,52 @@
             });
 
             var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,             // 화면에 보이는 슬라이드 개수
-                spaceBetween: 20,             // 슬라이드 간격 (px)
-                centeredSlides: true,         // 중앙에 슬라이드를 배치
-                loop: true,                   // 무한 반복
-                autoplay: {                   // 자동 슬라이드 설정
-                    delay: 3000,              // 3초마다 슬라이드
-                    disableOnInteraction: false, // 사용자 조작 후에도 자동 슬라이드 유지
+                slidesPerView: 1,
+                spaceBetween: 20,
+                centeredSlides: true,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
                 },
-                navigation: {                 // 화살표 버튼 설정
+                navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
                 pagination: {
                     el: '.swiper-pagination',
-                    type: 'progressbar', // 프로그레스 바 형태의 페이지네이션
+                    type: 'progressbar',
                 },
             });
-            const section = document.querySelector('.dp-section.main-best-seller'); // 해당 섹션 선택
+            const section = document.querySelector('.dp-section.main-best-seller');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // 요소가 화면에 들어오면 .visible 클래스를 추가하여 애니메이션 실행
-                    entry.target.classList.add('visible');
-                } else {
-                    // 화면에서 나가면 .visible 클래스를 제거하여 애니메이션 초기화
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, { threshold: 0.1 }); // 요소가 50% 보일 때 애니메이션 시작
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
 
-        // 해당 섹션에 관찰기 적용
-        observer.observe(section);
-    });
+                        entry.target.classList.add('visible');
+                    } else {
+
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+
+            observer.observe(section);
+        });
     </script>
 
 </head>
-    
+
 
 <body>
     <header class="header">
+        <div class="menu_icon">
+            <a href="#">
+                <img src="img/menu-icons.png" alt="메뉴">
+            </a>
+        </div>
         <h1 class="logo">
             <a href="#">
                 <img src="img/29_logo.png" alt="">
@@ -93,11 +99,171 @@
         </h1>
         <div class="main_menu">
             <ul>
-                <li><a href="#">WOMAN</a></li>
-                <li><a href="#">MEN</a></li>
-                <li><a href="#">LIFE</a></li>
-                <li><a href="#">BEAUTY</a></li>
-                <li><a href="#">KIDS</a></li>
+                <li><a href="#">WOMAN</a>
+                    <div class="depth02">
+                        <div class="inner">
+                            <ul>
+                                <li><a href="#">의류</a></li>
+                                <li><a href="#">상의</a></li>
+                                <li><a href="#">바지</a></li>
+                                <li><a href="#">스커트</a></li>
+                                <li><a href="#">원피스</a></li>
+                                <li><a href="#">아우터</a></li>
+                                <li><a href="#">이너웨어</a></li>
+                                <li><a href="#">홈웨어</a></li>
+                                <li><a href="#">해외브랜드</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">가방</a></li>
+                                <li><a href="#">숄더백</a></li>
+                                <li><a href="#">캐리어,여행가방</a></li>
+                                <li><a href="#">크로스백</a></li>
+                                <li><a href="#">도트백</a></li>
+                                <li><a href="#">백팩</a></li>
+                                <li><a href="#">클러치</a></li>
+                                <li><a href="#">파우치</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">신발</a></li>
+                                <li><a href="#">플랫,로퍼</a></li>
+                                <li><a href="#">부츠</a></li>
+                                <li><a href="#">스니커즈</a></li>
+                                <li><a href="#">슬리퍼,뮬</a></li>
+                                <li><a href="#">해외브랜드</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">악세사리</a></li>
+                                <li><a href="#">주얼리</a></li>
+                                <li><a href="#">모자</a></li>
+                                <li><a href="#">시계</a></li>
+                                <li><a href="#">카드,지갑케이스</a></li>
+                                <li><a href="#">아이웨어</a></li>
+                                <li><a href="#">이너웨어</a></li>
+                                <li><a href="#">벨트</a></li>
+                                <li><a href="#">헤어 악세사리</a></li>
+                                <li><a href="#">기타 악세사리</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">MEN</a>
+                    <div class="depth02">
+                        <div class="inner">
+                            <ul>
+                                <li><a href="#">의류</a></li>
+                                <li><a href="#">상의</a></li>
+                                <li><a href="#">하의</a></li>
+                                <li><a href="#">셋업</a></li>
+                                <li><a href="#">해외브랜드</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">가방</a></li>
+                                <li><a href="#">숄더백</a></li>
+                                <li><a href="#">캐리어,여행가방</a></li>
+                                <li><a href="#">백팩</a></li>
+                                <li><a href="#">클러치</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">신발</a></li>
+                                <li><a href="#">부츠</a></li>
+                                <li><a href="#">샌들</a></li>
+                                <li><a href="#">스니커즈</a></li>
+                                <li><a href="#">구두</a></li>
+                                <li><a href="#">해외브랜드</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">악세사리</a></li>
+                                <li><a href="#">모자</a></li>
+                                <li><a href="#">벨트</a></li>
+                                <li><a href="#">시계</a></li>
+                                <li><a href="#">머플러</a></li>
+                                <li><a href="#">양말</a></li>
+                                <li><a href="#">넥타이</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">LIFE</a>
+                    <div class="depth02">
+                        <div class="inner">
+                            <ul>
+                                <li><a href="#">가구,인테리어</a></li>
+                                <li><a href="#">EXCLUSIVE</a></li>
+                                <li><a href="#">홈패브릭</a></li>
+                                <li><a href="#">가구</a></li>
+                                <li><a href="#">홈데코</a></li>
+                                <li><a href="#">침구</a></li>
+                                <li><a href="#">조명</a></li>
+                                <li><a href="#">아트,디자인</a></li>
+                                <li><a href="#">스테이셔너리</a></li>
+                                <li><a href="#">홈프레그런스</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">주방,생활</a></li>
+                                <li><a href="#">주방수납</a></li>
+                                <li><a href="#">컵,잔,텀블러</a></li>
+                                <li><a href="#">그릇,커트러리</a></li>
+                                <li><a href="#">테이블웨어</a></li>
+                                <li><a href="#">주방잡화</a></li>
+                                <li><a href="#">욕실용품</a></li>
+                                <li><a href="#">생활용품</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">가전</a></li>
+                                <li><a href="#">영상가전</a></li>
+                                <li><a href="#">세탁기,건조기</a></li>
+                                <li><a href="#">생활가전</a></li>
+                                <li><a href="#">건강가전</a></li>
+                                <li><a href="#">리퍼브</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">푸드</a></li>
+                                <li><a href="#">선물세트</a></li>
+                                <li><a href="#">음료</a></li>
+                                <li><a href="#">가공식품</a></li>
+                                <li><a href="#">신선,냉장</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">BEAUTY</a>
+                    <div class="depth02">
+                        <div class="inner">
+                            <ul>
+                                <li><a href="#">뷰티</a></li>
+                                <li><a href="#">선물세트</a></li>
+                                <li><a href="#">스킨케어</a></li>
+                                <li><a href="#">바디케어</a></li>
+                                <li><a href="#">헤어케어</a></li>
+                                <li><a href="#">여성용품</a></li>
+                                <li><a href="#">향수</a></li>
+                                <li><a href="#">남성용품</a></li>
+                                <li><a href="#">이너뷰티</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">KIDS</a>
+                    <div class="depth02">
+                        <div class="inner">
+                            <ul>
+                                <li><a href="#">유아,아동</a></li>
+                                <li><a href="#">외출용품</a></li>
+                                <li><a href="#">베이비 용품</a></li>
+                                <li><a href="#">여아의류</a></li>
+                                <li><a href="#">남아의류</a></li>
+                                <li><a href="#">베이비</a></li>
+                                <li><a href="#">키즈</a></li>
+                                <li><a href="#">주니어</a></li>
+                                <li><a href="#">신발,잡화</a></li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </li>
                 <li><a href="#">CULTURE</a></li>
             </ul>
 
@@ -107,6 +273,18 @@
             <div class="mian_Lookbook">
                 <a href="#">Lookbook</a>
             </div>
+        </div>
+
+        <div class="icons">
+            <a href="#">
+                <img src="img/search-icons.png" alt="검색">
+            </a>
+            <a href="#">
+                <img src="img/user-icons.png" alt="로그인">
+            </a>
+            <a href="#">
+                <img src="img/cart-icons.png" alt="장바구니">
+            </a>
         </div>
     </header>
 
@@ -121,9 +299,6 @@
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination-number"></div>
-    <!-- 프로그레스 바 페이지네이션 -->
-    <div class="swiper-pagination-bar"></div>
     </div>
 
 
@@ -166,7 +341,7 @@
                             <img src="img/Jacquard hoodie cardigan_2colors.jpg" alt="후드 가디건">
                         </div> <!-- before -->
                         <div class="after">
-                            <img src="img/Jacquard hoodie cardigan_2colors 2.jpg" alt="">
+                            <img src="img/Jacquard hoodie cardigan_2colors_h.jpg" alt="">
 
                         </div> <!-- after -->
                     </div> <!-- prod_img -->
@@ -410,17 +585,17 @@
             </video>
             <div class="item_wrap">
                 <div class="item">
-                    <div class="text">
-                        <h4>쇼핑하기</h4>
-                    </div>
+                    <button class="button">
+                        쇼핑하기
+                    </button>
                 </div> <!-- item end -->
 
                 <div class="item">
-                    <div class="text">
-                        <h5>영상보기</h5>
-                        <img src="img/영상보기 아이콘.png" alt="" />
-                    </div>
+                    <button class="button">
+                        영상보기
+                    </button>
                 </div> <!-- item end -->
+
             </div>
         </div>
     </section>
@@ -483,7 +658,7 @@
                     <img src="img/메거진 1.jpg" alt= />
                     <div class="text">
                         <h2>TRIMMING BIRD</h2>
-                        <p>지금 그 브랜드, <br/> 어떻게 또 얼마나 알고계세요?</p>
+                        <p>지금 그 브랜드, <br /> 어떻게 또 얼마나 알고계세요?</p>
 
                     </div><!-- .text end -->
                 </div><!-- .item end -->
@@ -587,11 +762,12 @@
                 </li>
                 <li>
                     <a href="#">
-                        <img src="img/페이스북.png" />
+                        <img src="img/스토어.png" />
                     </a>
                 </li>
             </ul>
-        </div> <!--  -->
-    </footer> <!--  -->
+        </div> <!-- .footer_bottom -->
+    </footer> <!-- .footer end -->
 </body>
+
 </html>
