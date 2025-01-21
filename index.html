@@ -709,110 +709,110 @@
     </footer> <!-- .footer end -->
 </body>
 <script>
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector(".header");
-        const scrollBar = window.scrollY;
+     window.addEventListener('scroll', () => {
+            const header = document.querySelector(".header");
+            const scrollBar = window.scrollY;
 
-        if (scrollBar > 0) {
-            header.classList.add('fixed');
-            header.classList.remove('fixed');
-        }
-
-        const bounce = document.querySelector('.bounce');
-        if (scrollBar > 100) {
-            bounce.style.opacity = '0';
-        } else {
-            bounce.style.opacity = '1';
-        }
-
-        const topButton = document.querySelector('.top_button');
-        if (scrollBar > 200) {
-            topButton.style.opacity = '1';
-            topButton.style.transition = 'opacity 0.5s ease';
-        } else {
-            topButton.style.opacity = '0';
-        }
-    });
-
-    $(document).ready(function () {
-        const $sliderInner = $(".slider_inner");
-        const $items = $(".slider_inner .item");
-        const itemCount = $items.length;
-
-        $items.each(function () {
-            $(this).clone().appendTo($sliderInner);
-        });
-
-        $sliderInner.on("animationiteration", function () {
-            $sliderInner.css("animation", "none");
-            $sliderInner.css("transform", "translateX(0)");
-            setTimeout(function () {
-                $sliderInner.css("animation", "slide 30s linear infinite");
-            }, 50);
-        });
-
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,            
-            spaceBetween: 20,          
-            centeredSlides: true,      
-            loop: true,                
-            autoplay: {                
-                delay: 3000,            
-                disableOnInteraction: false
-            },
-            navigation: {             
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-
-        const nextButton = document.querySelector('.swiper-button-next');
-        const prevButton = document.querySelector('.swiper-button-prev');
-
-        const toggleButtonsVisibility = (event) => {
-            const rectNext = nextButton.getBoundingClientRect();
-            const rectPrev = prevButton.getBoundingClientRect();
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-
-            if (mouseX > rectNext.left - 30 && mouseX < rectNext.right + 30 &&
-                mouseY > rectNext.top - 30 && mouseY < rectNext.bottom + 30) {
-                nextButton.style.opacity = 1;
+            if (scrollBar > 0) {
+                header.classList.add('fixed');
             } else {
-                nextButton.style.opacity = 0;
+                header.classList.remove('fixed');
             }
 
-            if (mouseX > rectPrev.left - 30 && mouseX < rectPrev.right + 30 &&
-                mouseY > rectPrev.top - 30 && mouseY < rectPrev.bottom + 30) {
-                prevButton.style.opacity = 1;
+            const bounce = document.querySelector('.bounce');
+            if (scrollBar > 100) {
+                bounce.style.opacity = '0';
             } else {
-                prevButton.style.opacity = 0;
+                bounce.style.opacity = '1';
             }
-        };
 
-        document.querySelector('.swiper').addEventListener('mousemove', toggleButtonsVisibility);
-
-        document.querySelector('.swiper').addEventListener('mouseleave', () => {
-            nextButton.style.opacity = 0;
-            prevButton.style.opacity = 0;
+            const topButton = document.querySelector('.top_button');
+            if (scrollBar > 200) {
+                topButton.style.opacity = '1';
+                topButton.style.transition = 'opacity 0.5s ease';
+            } else {
+                topButton.style.opacity = '0';
+            }
         });
 
-        const section = document.querySelector('.dp-section.main-best-seller');
+        $(document).ready(function () {
+            const $sliderInner = $(".slider_inner");
+            const $items = $(".slider_inner .item");
+            const itemCount = $items.length;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add('visible');
-                } else {
-                
-                    entry.target.classList.remove('visible');
-                }
+            $items.each(function () {
+                $(this).clone().appendTo($sliderInner);
             });
-        }, { threshold: 0.1 });
 
-        
-        observer.observe(section);
-    });
+            $sliderInner.on("animationiteration", function () {
+                $sliderInner.css("animation", "none");
+                $sliderInner.css("transform", "translateX(0)");
+                setTimeout(function () {
+                    $sliderInner.css("animation", "slide 30s linear infinite");
+                }, 50);
+            });
+
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                centeredSlides: true,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            const nextButton = document.querySelector('.swiper-button-next');
+            const prevButton = document.querySelector('.swiper-button-prev');
+
+            const toggleButtonsVisibility = (event) => {
+                const rectNext = nextButton.getBoundingClientRect();
+                const rectPrev = prevButton.getBoundingClientRect();
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                if (mouseX > rectNext.left - 30 && mouseX < rectNext.right + 30 &&
+                    mouseY > rectNext.top - 30 && mouseY < rectNext.bottom + 30) {
+                    nextButton.style.opacity = 1;
+                } else {
+                    nextButton.style.opacity = 0;
+                }
+
+                if (mouseX > rectPrev.left - 30 && mouseX < rectPrev.right + 30 &&
+                    mouseY > rectPrev.top - 30 && mouseY < rectPrev.bottom + 30) {
+                    prevButton.style.opacity = 1;
+                } else {
+                    prevButton.style.opacity = 0;
+                }
+            };
+
+            document.querySelector('.swiper').addEventListener('mousemove', toggleButtonsVisibility);
+
+            document.querySelector('.swiper').addEventListener('mouseleave', () => {
+                nextButton.style.opacity = 0;
+                prevButton.style.opacity = 0;
+            });
+
+            const section = document.querySelector('.dp-section.main-best-seller'); // 해당 섹션 선택
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add('visible');
+                    } else {
+
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(section);
+        });
 </script>
 </html>
